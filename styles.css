@@ -1,0 +1,134 @@
+/* CSS variables for colours & spacing */
+:root{
+  --bg: #ffffff;
+  --panel: #f8fafc;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --accent: #1f6feb;    
+  --radius: 12px;
+  --gap: 1.25rem;
+  --max-width: 1100px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-serif: "Merriweather", Georgia, serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  color:var(--text);
+  background-color:var(--bg);
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Skip link */
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:1rem;
+  top:1rem;
+  width:auto;
+  height:auto;
+  padding:.5rem .75rem;
+  background:var(--accent);
+  color:white;
+  border-radius:6px;
+}
+
+/* Header */
+.site-header{
+  border-bottom:1px solid #e6edf6;
+  background:linear-gradient(180deg, rgba(31,111,235,0.04), transparent 80%);
+}
+.header-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem;
+  gap:1rem;
+}
+.brand h1{margin:.1rem 0;font-family:var(--font-serif);font-weight:700}
+.role{margin:0;color:var(--muted)}
+
+/* Nav */
+.site-nav ul{
+  list-style:none;margin:0;padding:0;display:flex;gap:0.75rem;
+}
+.site-nav a{
+  text-decoration:none;padding:.4rem .6rem;border-radius:8px;color:var(--text);
+}
+.site-nav a:focus,
+.site-nav a:hover{
+  background:var(--panel);
+  outline:2px solid transparent;
+}
+
+/* Layout grid for main: sidebar + main content */
+.container{
+  max-width:var(--max-width);
+  margin:1.25rem auto;
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  gap:var(--gap);
+  padding:0 1rem;
+}
+
+/* Sidebar */
+.sidebar{
+  background:var(--panel);
+  padding:1rem;
+  border-radius:var(--radius);
+}
+.avatar{display:block;width:100%;max-width:160px;border-radius:12px;margin-bottom:.75rem}
+
+/* Content */
+.main-content{
+  background:transparent;
+}
+.main-content section{
+  background:white;
+  border-radius:12px;
+  padding:1rem;
+  margin-bottom:1rem;
+  box-shadow:0 1px 0 rgba(15,23,42,0.04);
+}
+.job-meta{color:var(--muted);font-size:.95rem}
+
+/* Skills badges */
+.skills-list{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}
+.skills-list li{
+  background:white;padding:.35rem .6rem;border-radius:999px;border:1px solid #e6eefc;font-size:.9rem;
+}
+
+/* Footer */
+.site-footer{text-align:center;padding:1rem;color:var(--muted)}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus{
+  outline:3px solid rgba(31,111,235,0.18);
+  outline-offset:2px;
+}
+
+/* Responsive: tablet & mobile */
+@media (max-width: 900px){
+  .container{grid-template-columns: 1fr; padding:0 0.75rem}
+  .header-inner{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .site-nav ul{flex-wrap:wrap}
+}
+
+/* Mobile */
+@media (max-width: 480px){
+  .brand h1{font-size:1.25rem}
+  .skills-list li{font-size:.85rem;padding:.25rem .5rem}
+}
